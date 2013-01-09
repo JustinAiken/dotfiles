@@ -24,8 +24,9 @@
   untracked = cyan
 
 [core]
-	editor = vim 
-	filemode = false
+  editor = vim 
+  filemode = false
+
 [alias]
   st = status
   ci = commit
@@ -35,3 +36,4 @@
   amend = commit --amend
   aa = add --all
   b = branch
+  l = "!. ~/.githelpers && pretty_git_log"
