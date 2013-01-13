@@ -2,3 +2,8 @@
 !.gitconfig
 !.gitignore
 !.githelpers
+!.vimrc
+!.vim/
+!.vim/*
+!.vim/**/*
+.vim/.netwrhist
