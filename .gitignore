@@ -7,3 +7,7 @@
 !.vim/*
 !.vim/**/*
 .vim/.netwrhist
+!.zshrc
+!.oh-my-zsh
+!.oh-my-zsh/*
+!.oh-my-zsh/**/*
