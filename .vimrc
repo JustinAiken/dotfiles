@@ -10,3 +10,4 @@ set tabstop=2 shiftwidth=2 softtabstop=2
 set autoindent
 set smartindent
 set nu
+colorscheme molokai
