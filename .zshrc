@@ -10,6 +10,9 @@ alias mvim="nocorrect mvim"
 # CASE_SENSITIVE="true" #case-sensitive completion
 DISABLE_AUTO_UPDATE="true"
 
+setopt inc_append_history
+unsetopt share_history
+
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
