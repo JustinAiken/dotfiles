@@ -5,6 +5,8 @@ ZSH_THEME="justinaiken"
 alias nano="vim"
 alias pico="vim" 
 
+alias mvim="nocorrect mvim"
+
 # CASE_SENSITIVE="true" #case-sensitive completion
 DISABLE_AUTO_UPDATE="true"
 
