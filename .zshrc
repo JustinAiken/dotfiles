@@ -10,8 +10,6 @@ alias mvim="nocorrect mvim"
 # CASE_SENSITIVE="true" #case-sensitive completion
 DISABLE_AUTO_UPDATE="true"
 
-setopt inc_append_history
-unsetopt share_history
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -22,6 +20,8 @@ plugins=(git bundler)
 
 source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
+setopt inc_append_history
+unsetopt share_history
 
 # Customize to your needs...
 export PATH=/usr/local/rvm/gems/ruby-1.9.2-p320@callengine/bin:/usr/local/rvm/gems/ruby-1.9.2-p320@global/bin:/usr/local/rvm/rubies/ruby-1.9.2-p320/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
@@ -30,3 +30,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=$PATH:/usr/local/mysql/bin
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+__git_files () { 
+      _wanted files expl 'local files' _files     
+    }
