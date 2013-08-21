@@ -16,7 +16,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git bundler)
+plugins=(git bundler ahn vagrant)
 
 source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
@@ -34,3 +34,6 @@ export PATH=$PATH:/usr/local/mysql/bin
 __git_files () { 
       _wanted files expl 'local files' _files     
     }
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
