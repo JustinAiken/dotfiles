@@ -1,6 +1,6 @@
 [user]
-  name = Justin Aiken
-  email = 60tonangel@gmail.com
+	name = Justin Aiken
+	email = 60tonangel@gmail.com
 
 [color]
   branch = auto
@@ -24,8 +24,9 @@
   untracked = cyan
 
 [core]
-  editor = vim 
+  editor = vim
   filemode = false
+	excludesfile = ~/.gitignore_global
 
 [alias]
   st = status
@@ -42,3 +43,6 @@
   assume   = update-index --assume-unchanged
   unassume = update-index --no-assume-unchanged
   assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+
+[push]
+	default = matching
