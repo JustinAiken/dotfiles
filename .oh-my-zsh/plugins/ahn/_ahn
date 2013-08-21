@@ -1,10 +1,11 @@
 #compdef ahn
 #autoload
 
-# vagrant ahn completion
+# zsh ahn completion
 
 local -a _1st_arguments
 _1st_arguments=(
+    '-:Using the current dir, start the Adhearsion server in the foreground'
     'generate:generators'
     'create:create a new Adhearsion application under the given path'
     'daemon:start the Adhearsion server in the background'
