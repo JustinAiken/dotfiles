@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dir=~/dotfiles                    # dotfiles directory
-files="gitignore gitignore_global gitconfig githelpers vimrc vim zshrc oh-my-zsh"    # list of files/folders to symlink in homedir
+files="gitignore gitignore_global gitconfig githelpers vimrc vim zshrc oh-my-zsh-custom"    # list of files/folders to symlink in homedir
 
 echo "Changing to the $dir directory"
 cd $dir
