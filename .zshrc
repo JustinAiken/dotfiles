@@ -17,7 +17,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git ahn vagrant capistrano heroku zeus)
+plugins=(git ahn vagrant capistrano heroku zeus jump)
 
 source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
