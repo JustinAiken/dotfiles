@@ -21,7 +21,7 @@ function marks {
 }
 
 function _completemarks {
-  reply=($(ls $MARKPATH))
+reply=($(ls $MARKPATH/**/*(-) | grep : | sed -E 's/(.*)\/([a-z]*):$/\2/g'))
 }
 
 compctl -K _completemarks jump
