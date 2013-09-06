@@ -7,22 +7,39 @@
 # marks: lists all marks
 #
 export MARKPATH=$HOME/.marks
-function jump {
-	cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
-}
-function mark {
-	mkdir -p "$MARKPATH"; ln -s "$(pwd)" $MARKPATH/$1
-}
-function unmark {
-	rm -i "$MARKPATH/$1"
-}
-function marks {
-	ls -l "$MARKPATH" | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
+
+jump() {
+  cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
 }
 
-function _completemarks {
-reply=($(ls $MARKPATH/**/*(-) | grep : | sed -E 's/(.*)\/([_\da-zA-Z\-]*):$/\2/g'))
+mark() {
+  mkdir -p "$MARKPATH"; ln -s "$(pwd)" $MARKPATH/$1
 }
 
+unmark() {
+  rm -i "$MARKPATH/$1"
+}
+
+autoload colors
+marks() {
+  for link in $MARKPATH/*(@); do
+    local markname="$fg[cyan]${link:t}$reset_color"
+    local markpath="$fg[blue]$(readlink $link)$reset_color"
+    printf "%s\t" $markname
+    printf "-> %s \t\n" $markpath
+  done
+}
+
+_completemarks() {
+  reply=($(ls $MARKPATH/**/*(-) | grep : | sed -E 's/(.*)\/([_\da-zA-Z\-]*):$/\2/g'))
+}
 compctl -K _completemarks jump
 compctl -K _completemarks unmark
+
+_mark_expansion() {
+  setopt extendedglob
+  autoload -U modify-current-argument
+  modify-current-argument '$(readlink "$MARKPATH/$ARG")'
+}
+zle -N _mark_expansion
+bindkey "^g" _mark_expansion
