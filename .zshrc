@@ -24,6 +24,9 @@ unsetopt correct_all
 setopt inc_append_history
 unsetopt share_history
 
+# Make my VMs mighty
+export MIGHTY_VM=true
+
 # Customize to your needs...
 export PATH=usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
