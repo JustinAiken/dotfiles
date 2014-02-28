@@ -16,7 +16,8 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git ahn vagrant capistrano heroku zeus jump)
+plugins=(ahn brew capistrano gem git heroku jump osx vagrant zeus)
+
 source $ZSH/oh-my-zsh.sh
 
 unsetopt correct_all
@@ -38,5 +39,3 @@ __git_files () {
 }
 
 zstyle ':completion:*:git-checkout:*' tag-order - '! commit-tags'
-
-
