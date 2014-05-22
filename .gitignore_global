@@ -10,3 +10,6 @@ Thumbs.db
 .cap_tasks~
 .cap_tasks
 .rake_tasks
+
+Gemfile.local
+Gemfile.local.lock
