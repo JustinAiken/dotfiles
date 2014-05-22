@@ -1,4 +1,3 @@
-export PATH=usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH=$PATH:$HOME/.rvm/bin
 export PATH=$PATH:/usr/local/mysql/bin
