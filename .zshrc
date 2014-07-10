@@ -15,7 +15,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(ahn brew bundle capistrano gem git heroku jump osx pod vagrant rvm zeus zsh_reload)
+plugins=(ahn brew bundle capistrano gem git heroku jump osx pod vagrant rvm spring_gem zeus zsh_reload)
 
 source $ZSH/oh-my-zsh.sh
 
