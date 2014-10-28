@@ -1,0 +1,54 @@
+#!/bin/bash
+
+####
+# Script for Today Scripts (http://www.reddit.com/r/osx/comments/2k24ps/today_scripts_widget_update_colorized_output/)
+####
+
+echo ""
+
+title_color=$'\e[35m'
+
+title='Uptime:'
+cmd=$(uptime | awk -F, '{print $1,$2}' | sed 's/:/h, /g;s/^.*up */Uptime: /; s/ *[0-9]* user.*//;s/[0-9]$/&m/;s/ day. */d, /g')
+echo "$title_color$title "$'\e[0m'"$cmd"
+echo ""
+
+title='CPU:'
+echo "$title_color$title "$'\e[0m'""
+ps xro %cpu=,comm= | while read cpu comm; ((i++<5)); do
+
+    cpu="${cpu%%.*}"
+    if   (($cpu >= 20)); then color=$'\e[31m';
+    elif (($cpu >= 10)); then color=$'\e[33m';
+    else                      color=$'\e[32m';
+    fi;
+
+    echo "$color$cpu% $(basename "$comm")"$'\e[0m'"";
+
+done
+echo ""
+
+title='Memory:'
+echo "$title_color$title "$'\e[0m'""
+ps xmo rss=,pmem=,comm= | while read rss pmem comm; ((n++<5)); do
+
+    size="$[rss/1024]";
+    short=$[4-${#size}];
+    size="(${size}M)";
+    i=0;
+    while ((i++ < short)); do size=" $size"; done;
+
+    pmem="${pmem%%.*}"
+    if   (($pmem >= 20)); then color=$'\e[31m';
+    elif (($pmem >= 10)); then color=$'\e[33m';
+    else                       color=$'\e[32m ';
+    fi;
+
+    echo "$color$pmem% $size $(basename "$comm")"$'\e[0m'"";
+done
+echo ""
+
+title='Disk Space:'
+cmd=$(df -Hl / | { read keys; keys="${keys%% on}"; while read ${keys//%}; do echo "$Used/$Size ($Capacity)"; done })
+echo "$title_color$title "$'\e[0m'"$cmd"
+echo ""
