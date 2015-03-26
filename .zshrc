@@ -36,3 +36,5 @@ __git_files () {
 }
 
 zstyle ':completion:*:git-checkout:*' tag-order - '! commit-tags'
+
+ulimit -S -n 2048
