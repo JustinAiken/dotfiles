@@ -42,3 +42,9 @@ __git_files () {
 zstyle ':completion:*:git-checkout:*' tag-order - '! commit-tags'
 
 ulimit -S -n 2048
+
+ZSH_HIGHLIGHT_STYLES[alias]='fg=077'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=122'
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=123'
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'bold,bg=red')
