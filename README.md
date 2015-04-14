@@ -29,7 +29,14 @@ git clone git@github.com:JustinAiken/dotfiles.git
 git clone https://github.com/JustinAiken/dotfiles.git
 ```
 
-- 5. Run the sync script:
+- 5. Sync the submodules:
+
+```bash
+git submodule init
+git submodule update
+```
+
+- 6. Run the sync script:
 
 ```bash
 chmod +x ~/dotfiles/sync.sh && ~/dotfiles/sync.sh
