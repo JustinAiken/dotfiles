@@ -1,4 +1,4 @@
-export PATH=$PATH:$HOME/.rvm/bin
+export PATH="$PATH:$HOME/.rvm/bin:/usr/local/rvm/bin" # Add RVM to PATH for scripting
 
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
@@ -32,8 +32,6 @@ if hash subl 2>/dev/null; then
 else
   export EDITOR=vim
 fi
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 __git_files () {
   _wanted files expl 'local files' _files
