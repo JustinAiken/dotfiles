@@ -1,6 +1,6 @@
 local rvm=''
 if hash rvm-prompt 2>/dev/null; then
-  rvm='%{$fg[green]%}‹$(rvm-prompt i v p g)›%{$reset_color%}'
+  rvm='%{$fg[green]%}<$(rvm-prompt i v p g)>%{$reset_color%}'
 fi
 
 user="%n"
