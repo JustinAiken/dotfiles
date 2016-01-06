@@ -27,8 +27,11 @@ unsetopt share_history
 
 export MIGHTY_VM=true
 
-if hash subl 2>/dev/null; then
-  export EDITOR=subl
+if hash atom 2>/dev/null; then
+  export EDITOR=atom
+  function atom_gem () {
+    atom $(bundle show $1)
+  }
 else
   export EDITOR=vim
 fi
