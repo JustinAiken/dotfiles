@@ -46,6 +46,7 @@
   assumed      = "!git ls-files -v | grep ^h | cut -c 3-"
   undo-commit  = reset --soft HEAD~1
   fubard-local = !CURRENT=$(git rev-parse --abbrev-ref HEAD) && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
+	inject       = "!f() { set -e; HASH=`git show $1 --pretty=format:\"%H\" -q`; shift; git commit -m \"fixup! $HASH\" $*; [ -n \"$(git diff-files)\" ] && git stash && DIRTY=1; git rebase $HASH^^ -i --autosquash; [ -n \"$DIRTY\" ] && git stash pop;}; f"
 
 [push]
 	default = simple
