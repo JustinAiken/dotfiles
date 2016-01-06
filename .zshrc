@@ -49,3 +49,7 @@ ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=122'
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=123'
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'bold,bg=red')
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  source /Users/jaiken/.iterm2_shell_integration.zsh
+fi
