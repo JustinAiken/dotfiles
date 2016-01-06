@@ -1,4 +1,4 @@
-export PATH="$PATH:$HOME/.rvm/bin:/usr/local/rvm/bin" # Add RVM to PATH for scripting
+export PATH="/usr/local/sbin:$PATH:$HOME/.rvm/bin:/usr/local/rvm/bin" # Add sbin and RVM to PATH for scripting
 
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
