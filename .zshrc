@@ -14,9 +14,9 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 if [[ "$(uname)" == "Darwin" ]]; then
-  plugins=(ahn brew bundle capistrano gem git github heroku jump kitchen knife knife-ssh meteor npm osx pod pow powify rails rvm spring_gem vagrant zeus zsh_reload zsh-syntax-highlighting)
+  plugins=(ahn brew bundle capistrano docker docker-compose gem git github heroku jump kitchen knife knife-ssh meteor npm osx pod pow powify rails rvm spring_gem vagrant zeus zsh_reload zsh-syntax-highlighting)
 else
-  plugins=(ahn bundle capistrano gem git heroku jump kitchen knife knife-ssh npm rails rvm spring_gem vagrant zeus zsh_reload zsh-syntax-highlighting)
+  plugins=(ahn bundle capistrano docker docker-compose gem git heroku jump kitchen knife knife-ssh npm rails rvm spring_gem vagrant zeus zsh_reload zsh-syntax-highlighting)
 fi
 
 source $ZSH/oh-my-zsh.sh
