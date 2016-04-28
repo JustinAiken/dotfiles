@@ -1,13 +1,13 @@
 [user]
-	name = Justin Aiken
-	email = 60tonangel@gmail.com
-	signingkey = 6C6CBB16
+  name = Justin Aiken
+  email = 60tonangel@gmail.com
+  signingkey = 6C6CBB16
 
 [color]
   branch = auto
   diff = auto
   status = auto
-	ui = 1
+  ui = 1
 
 [color "branch"]
   current = yellow reverse
@@ -28,7 +28,7 @@
 [core]
   editor = vim
   filemode = false
-	excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore_global
 
 [alias]
   st = status
@@ -36,30 +36,30 @@
   co = checkout
   di = diff
   dc = diff --cached
-	pf = push --force-with-lease
+  pf = push --force-with-lease
   amend = commit --amend
   aa = add --all
   b = branch
   l = "!. ~/.githelpers && pretty_git_log"
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
   assume       = update-index --assume-unchanged
   unassume     = update-index --no-assume-unchanged
   assumed      = "!git ls-files -v | grep ^h | cut -c 3-"
   undo-commit  = reset --soft HEAD~1
   fubard-local = !CURRENT=$(git rev-parse --abbrev-ref HEAD) && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
-	inject       = "!f() { set -e; HASH=`git show $1 --pretty=format:\"%H\" -q`; shift; git commit -m \"fixup! $HASH\" $*; [ -n \"$(git diff-files)\" ] && git stash && DIRTY=1; git rebase $HASH^^ -i --autosquash; [ -n \"$DIRTY\" ] && git stash pop;}; f"
-	whatsgoinon  = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format="%(refname:short)"
+  inject       = "!f() { set -e; HASH=`git show $1 --pretty=format:\"%H\" -q`; shift; git commit -m \"fixup! $HASH\" $*; [ -n \"$(git diff-files)\" ] && git stash && DIRTY=1; git rebase $HASH^^ -i --autosquash; [ -n \"$DIRTY\" ] && git stash pop;}; f"
+  whatsgoinon  = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format="%(refname:short)"
 
 [push]
-	default = simple
+  default = simple
 [heroku]
-	account = personal
+  account = personal
 
 [url "git@github.com:"]
   insteadOf = https://github.com/
 
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
