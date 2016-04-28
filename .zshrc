@@ -51,5 +51,6 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'bold,bg=red')
 
 if [[ "$(uname)" == "Darwin" ]]; then
+  HOMEBREW_NO_ANALYTICS=1
   source /Users/jaiken/.iterm2_shell_integration.zsh
 fi
