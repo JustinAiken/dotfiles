@@ -14,5 +14,10 @@ Thumbs.db
 Gemfile.local
 Gemfile.local.lock
 
+
+# Tags:
 tags
 .tags_swap
+.tags
+.tags1
+tags1
