@@ -52,6 +52,7 @@
   whatsgoinon    = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format="%(refname:short)"
   obeyyourmaster = "!git fetch; git reset --hard origin/master"
   keepup         = "!git fetch; git rebase origin/master -S"
+  lastsha        = "!git rev-parse --short HEAD | tr -d '\n' | pbcopy"
 
 [push]
   default = simple
