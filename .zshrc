@@ -14,9 +14,9 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 if [[ "$(uname)" == "Darwin" ]]; then
-  plugins=(ahn brew bundle capistrano docker docker-compose gem git github heroku jump kitchen knife knife-ssh meteor npm osx pod pow powify rails rvm spring_gem vagrant zeus zsh_reload zsh-syntax-highlighting)
+  plugins=(ahn aws brew bundle capistrano docker docker-compose gem git github heroku jump kitchen knife knife-ssh mix npm osx pod pow powify rvm spring_gem vagrant zeus zsh_reload zsh-syntax-highlighting)
 else
-  plugins=(ahn bundle capistrano docker docker-compose gem git heroku jump kitchen knife knife-ssh npm rails rvm spring_gem vagrant zeus zsh_reload zsh-syntax-highlighting)
+  plugins=(ahn aws bundle capistrano docker docker-compose gem git heroku jump kitchen knife knife-ssh mix npm rvm spring_gem vagrant zeus zsh_reload zsh-syntax-highlighting)
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -35,6 +35,10 @@ if hash atom 2>/dev/null; then
 else
   export EDITOR=vim
 fi
+
+precmd() {
+  eval 'if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history | tail -n 1)" >>! ~/.shell_history/bash-history-$(date "+%Y-%m-%d").log; fi'
+ }
 
 __git_files () {
   _wanted files expl 'local files' _files
