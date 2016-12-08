@@ -21,3 +21,13 @@ tags
 .tags
 .tags1
 tags1
+
+.agignore
+
+# I use these notes everywhere:
+mynotes.rb
+mynotes.markdown
+
+# For storing code for me:
+justin/
+spec/justin/
