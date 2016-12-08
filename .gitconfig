@@ -54,10 +54,12 @@
   obeyyourmaster = "!git fetch; git reset --hard origin/master"
   keepup         = "!git fetch; git rebase origin/master -S"
   lastsha        = "!git rev-parse --short HEAD | tr -d '\n' | pbcopy"
-  goodmorning    = "!git checkout master; git pull; bundle install && rake db:migrate db:test:prepare && git checkout db/structure.sql"
+  goodmorning    = "!git checkout master; git pull --prune; bundle install && rake db:migrate db:test:prepare && git checkout db/structure.sql"
+  whatsmerged    = "!git branch --merged | grep -v master | grep -v dev | grep -v staging-qa"
 
 [push]
   default = simple
+
 [heroku]
   account = personal
 
