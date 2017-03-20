@@ -12,5 +12,5 @@ brewmeister() {
   brew cask cleanup --outdated
   echo "Outdated: \n\n"
   brew-cask-outdated
-  echo "Install outdateds with `brew cask reinstall`"
+  echo "Install outdateds with \`brew cask reinstall\`"
 }
