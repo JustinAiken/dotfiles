@@ -1,3 +1,6 @@
 .vim/.netwrhist
 .vim/bundle/vundle/.netrwhist
 .agignore
+
+# Nonpublic aliases for work:
+.oh-my-zsh-custom/usertesting.zsh
