@@ -56,6 +56,7 @@
   lastsha        = "!git rev-parse --short HEAD | tr -d '\n' | pbcopy"
   goodmorning    = "!git checkout master; git pull --prune; bundle install && rake db:migrate db:test:prepare && git checkout db/structure.sql"
   whatsmerged    = "!git branch --merged | grep -v master | grep -v dev | grep -v staging-qa"
+  pushnew        = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 
 [push]
   default = simple
