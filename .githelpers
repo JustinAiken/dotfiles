@@ -29,3 +29,28 @@ pretty_git_log() {
 
 # / *********************************** Gary Bernhardt's pretty log ***********************************
 
+cherry_drop() {
+  set -e
+  REF_TO_DROP=`git show $1 --pretty=format:%H -q`
+  HEAD=`git show HEAD --pretty=format:%H -q`
+  shift
+
+  # Stash changes if they exist
+  if ! git diff-index --quiet HEAD --; then
+    git stash && DIRTY=1
+  fi
+
+  if [[ $REF_TO_DROP == $HEAD ]]; then
+    # Easy way to undo a commit:
+    git reset --hard HEAD
+  else
+    # Rebase the commit out:
+    git rebase --keep-empty --onto $REF_TO_DROP~1 $REF_TO_DROP
+  fi
+
+  # Unstash changes if they were stashed:
+  [ -n "$DIRTY" ] && git stash pop
+
+  # Great success:
+  exit 0
+}
