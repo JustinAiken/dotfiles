@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Thanks to Gary Bernhardt for sharing this.
+# *********************************** Gary Bernhardt's pretty log ***********************************
 
 HASH="%C(yellow)%h%Creset"
 RELATIVE_TIME="%Cgreen(%ar)%Creset"
@@ -26,4 +26,6 @@ pretty_git_log() {
         # Page only if we need to
         less -FXRS
 }
+
+# / *********************************** Gary Bernhardt's pretty log ***********************************
 
