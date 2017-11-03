@@ -19,7 +19,7 @@ fixpow() {
   echo "Reinstalling"
   sudo pow --install-system
   pow --install-local
-  
+
   echo "Fixing firewall"
   sudo launchctl unload -w /Library/LaunchDaemons/cx.pow.firewall.plist
   sudo launchctl load -w /Library/LaunchDaemons/cx.pow.firewall.plist
@@ -29,3 +29,6 @@ fixpow() {
   launchctl load -w ~/Library/LaunchAgents/cx.pow.powd.plist
 }
 
+whats_listening() {
+  lsof -n -iTCP:$1 | grep LISTEN
+}
