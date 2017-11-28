@@ -20,6 +20,17 @@ fixpow() {
   sudo pow --install-system
   pow --install-local
 
+  # Nack isn't maintained anymore, and EOFErrors all over the place with Rails 5 or better_errors 2.2.x something+
+  # This fork fixes it.
+  # This is the hackiest thing ever.
+  # One day I'll give up and switch to puma-dev
+  echo "'Upgrading' Nack.."
+  wget \
+    --quiet \
+    -O /usr/local/Cellar/pow/0.5.0/libexec/node_modules/nack/lib/nack/server.rb \
+    https://raw.githubusercontent.com/RobinDaugherty/nack/19376b0dd1d6ce1acba9e063377569192a3bc686/lib/nack/server.rb \
+    && echo "Upgraded!"
+
   echo "Fixing firewall"
   sudo launchctl unload -w /Library/LaunchDaemons/cx.pow.firewall.plist
   sudo launchctl load -w /Library/LaunchDaemons/cx.pow.firewall.plist
