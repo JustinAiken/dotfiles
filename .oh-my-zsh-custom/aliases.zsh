@@ -27,7 +27,7 @@ fixpow() {
   echo "'Upgrading' Nack.."
   wget \
     --quiet \
-    -O /usr/local/Cellar/pow/0.5.0/libexec/node_modules/nack/lib/nack/server.rb \
+    -O /usr/local/Cellar/pow/0.6.0/libexec/node_modules/nack/lib/nack/server.rb \
     https://raw.githubusercontent.com/RobinDaugherty/nack/19376b0dd1d6ce1acba9e063377569192a3bc686/lib/nack/server.rb \
     && echo "Upgraded!"
 
