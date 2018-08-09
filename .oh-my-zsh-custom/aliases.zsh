@@ -43,3 +43,11 @@ fixpow() {
 whats_listening() {
   lsof -n -iTCP:$1 | grep LISTEN
 }
+
+# Backup my evernote data to git
+evernote_bak() {
+  cd /Users/jaiken/Library/Application\ Support/com.evernote.Evernote/accounts/www.evernote.com && \
+  git add --all && \
+  git ci -m "Update $(date +%Y-%m-%d)" && \
+  git push
+}
