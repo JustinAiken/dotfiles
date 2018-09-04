@@ -51,3 +51,9 @@ evernote_bak() {
   git ci -m "Update $(date +%Y-%m-%d)" && \
   git push
 }
+
+# Useful!
+jcurl() {
+  curl -s "$@" | jq -C '.' | less
+}
+
