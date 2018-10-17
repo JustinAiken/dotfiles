@@ -55,7 +55,7 @@
   obeyyourmaster = "!git fetch; git reset --hard origin/master"
   keepup         = "!git fetch; git rebase origin/master -S"
   lastsha        = "!git rev-parse --short HEAD | tr -d '\n' | pbcopy"
-  goodmorning    = "!git checkout master; git pull --prune; bundle install && yarn install --pure-lockfile --check-files && yarn postinstall && bundle exec rake db:migrate db:test:prepare && git checkout db/structure.sql"
+  goodmorning    = "!. ~/.githelpers && goodmorning"
   whatsmerged    = "!git branch --merged | grep -v master | grep -v dev | grep -v staging-qa"
   pushnew        = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
   rubocop        = "!git status --porcelain  | cut -c4- | grep '.rb' | xargs rubocop"

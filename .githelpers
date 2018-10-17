@@ -55,3 +55,109 @@ cherry_drop() {
 }
 # *********************************** / git cherry-drop ***********************************
 
+
+# *********************************** git goodmorning ***********************************
+goodmorning_echo_red() {
+  RED='\033[0;31m'
+  NC='\033[0m' # No Color
+
+  echo "${RED}--------- $1 ---------${NC}"
+}
+
+goodmorning_echo_yellow() {
+  YELLOW='\033[0;33m'
+  NC='\033[0m' # No Color
+
+  echo "${YELLOW}--------- $1 ---------${NC}"
+}
+
+goodmorning_echo_green() {
+  GREEN='\033[0;32m'
+  NC='\033[0m' # No Color
+
+  echo "${GREEN}--------- $1 ---------${NC}"
+}
+
+goodmorning_empty_lines() {
+  for i in `seq 1 $1`;
+  do
+    echo ""
+  done
+}
+
+semver() {
+  printf "%03d%03d%03d%03d" $(echo "$1" | tr '.' ' ')
+}
+goodmorning_check_bundler() {
+  GEMFILE_VER=$(cat Gemfile.lock | grep "BUNDLED WITH" -A1 | grep -v BUNDLED | awk '{print $1}')
+  BUNDLER_VER=$(bundler --version | grep "Bundler version " | sed 's/[^0-9.]*//g')
+
+  if [ $(semver $BUNDLER_VER) -lt $(semver $GEMFILE_VER) ]; then
+    goodmorning_echo_yellow "Updating bundler from $BUNDLER_VER to $GEMFILE_VER... "
+    gem install bundler -v $GEMFILE_VER
+    goodmorning_empty_lines 2
+  fi
+}
+
+goodmorning() {
+  set -e
+  clear
+
+  CUR_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+  if [[ "$CUR_BRANCH" == "master" ]]; then
+    goodmorning_echo_green "Updating master..."
+  else
+    goodmorning_echo_green "Switching to master and updating..."
+    git checkout master
+  fi
+  git pull --prune
+  goodmorning_empty_lines 3
+
+  if [ -f Gemfile ]; then
+    goodmorning_check_bundler
+    goodmorning_echo_green "Running bundle install..."
+    # Use reverse grep to filter out dozens of unchanged lines,
+    # such as "Using rake 10.5.0"
+    bundle install | grep -v Using | grep -v "Fetching source index" | grep -v "Fetching gem metadata" || goodmorning_echo_yellow "Failed to bundle install!"
+    goodmorning_empty_lines 3
+  fi
+
+  if [ -f package.json ]; then
+    goodmorning_echo_green "Running yarn install..."
+    # Safer:
+    # yarn install --pure-lockfile --check-files && yarn postinstall
+    # Faster:
+    yarn install --pure-lockfile || goodmorning_echo_yellow "Failed to yarn install!"
+    goodmorning_empty_lines 3
+  fi
+
+  # All done unless we're in a Rails project..
+  if [ ! -f bin/rails ]; then
+    goodmorning_echo_green "Finished!"
+    exit 0
+  fi
+
+  if [ -f bin/spring ]; then
+    RAKE_CMD="bin/spring rake"
+  elif [ -f bin/rake ]; then
+    RAKE_CMD="bin/rake"
+  else
+    RAKE_CMD="rake"
+  fi
+
+  goodmorning_echo_green "Running $RAKE_CMD db:migrate..."
+  `$RAKE_CMD db:migrate db:test:prepare` || goodmorning_echo_yellow "Failed to ready the database!"
+
+  # Avoid noise generated from running migration on master:
+  if [ -f db/structure.sql ]; then
+    git checkout db/structure.sql
+  fi
+  if [ -f db/schema.rb ]; then
+    git checkout db/schema.rb
+  fi
+  goodmorning_empty_lines 3
+
+  goodmorning_echo_green " 💚💚💚💚💚💚 Finished! You're up to date 💚💚💚💚💚💚💚"
+  exit 0
+}
+# *********************************** / git goodmorning ***********************************
