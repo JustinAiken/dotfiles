@@ -27,6 +27,7 @@ pretty_git_log() {
 }
 # / *********************************** Gary Bernhardt's pretty log ***********************************
 
+# *********************************** git cherry-drop ***********************************
 cherry_drop() {
   set -e
   REF_TO_DROP=`git show $1 --pretty=format:%H -q`
@@ -52,3 +53,5 @@ cherry_drop() {
   # Great success:
   exit 0
 }
+# *********************************** / git cherry-drop ***********************************
+
