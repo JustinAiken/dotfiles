@@ -1,21 +1,20 @@
 #!/bin/bash
 
 # *********************************** Gary Bernhardt's pretty log ***********************************
-
-HASH="%C(yellow)%h%Creset"
-RELATIVE_TIME="%Cgreen(%ar)%Creset"
-AUTHOR="%C(bold blue)<%an>%Creset"
-REFS="%C(red)%d%Creset"
-SUBJECT="%s"
-
-FORMAT="$HASH}$RELATIVE_TIME}$AUTHOR}$REFS $SUBJECT"
-
 show_git_head() {
     pretty_git_log -1
     git show -p --pretty="tformat:"
 }
 
 pretty_git_log() {
+  HASH="%C(yellow)%h%Creset"
+  RELATIVE_TIME="%Cgreen(%ar)%Creset"
+  AUTHOR="%C(bold blue)<%an>%Creset"
+  REFS="%C(red)%d%Creset"
+  SUBJECT="%s"
+
+  FORMAT="$HASH}$RELATIVE_TIME}$AUTHOR}$REFS $SUBJECT"
+
     git log --graph --pretty="tformat:${FORMAT}" $* |
         # Replace (2 years ago) with (2 years)
         sed -Ee 's/(^[^<]*) ago\)/\1)/' |
@@ -26,7 +25,6 @@ pretty_git_log() {
         # Page only if we need to
         less -FXRS
 }
-
 # / *********************************** Gary Bernhardt's pretty log ***********************************
 
 cherry_drop() {
