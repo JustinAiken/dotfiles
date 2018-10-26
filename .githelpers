@@ -103,12 +103,14 @@ goodmorning() {
   set -e
   clear
 
+  BASE_BRANCH=$1
+
   CUR_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-  if [[ "$CUR_BRANCH" == "master" ]]; then
-    goodmorning_echo_green "Updating master..."
+  if [[ "$CUR_BRANCH" == "$BASE_BRANCH" ]]; then
+    goodmorning_echo_green "Updating $BASE_BRANCH..."
   else
-    goodmorning_echo_green "Switching to master and updating..."
-    git checkout master
+    goodmorning_echo_green "Switching to $BASE_BRANCH and updating..."
+    git checkout $BASE_BRANCH
   fi
   git pull --prune
   goodmorning_empty_lines 3
