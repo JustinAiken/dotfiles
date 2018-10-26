@@ -103,7 +103,7 @@ goodmorning() {
   set -e
   clear
 
-  BASE_BRANCH=$1
+  BASE_BRANCH=${1:-"master"}
 
   CUR_BRANCH=$(git rev-parse --abbrev-ref HEAD)
   if [[ "$CUR_BRANCH" == "$BASE_BRANCH" ]]; then
