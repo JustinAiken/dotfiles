@@ -1,7 +1,3 @@
-export PATH="/usr/local/sbin:$PATH:$HOME/.rvm/bin" # Add sbin and RVM to PATH for scripting
-export PATH="/usr/local/opt/node@8/bin:$PATH"
-source ~/.rvm/scripts/rvm
-
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 ZSH_THEME="justinaiken"
@@ -20,6 +16,9 @@ if [[ "$(uname)" == "Darwin" ]]; then
 else
   plugins=(ahn aws bundle capistrano docker docker-compose gem git heroku jump mix npm rvm spring_gem vagrant zeus zsh_reload zsh-syntax-highlighting)
 fi
+
+export PATH="/usr/local/opt/node@8/bin:$PATH"
+[ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
 
 source $ZSH/oh-my-zsh.sh
 
@@ -60,3 +59,5 @@ if [[ "$(uname)" == "Darwin" ]]; then
   HOMEBREW_NO_ANALYTICS=1
   source /Users/jaiken/.iterm2_shell_integration.zsh
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
