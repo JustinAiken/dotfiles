@@ -78,3 +78,5 @@
 
 [pager]
 	branch = false
+[diff]
+	colorMoved = zebra
