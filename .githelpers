@@ -163,3 +163,12 @@ goodmorning() {
   exit 0
 }
 # *********************************** / git goodmorning ***********************************
+
+# *********************************** git fbr ***********************************
+fbr() {
+  local branches branch
+  branches=$(git branch -vv)
+  branch=$(echo "$branches" | fzf +m)
+  git checkout $(echo "$branch" | sed "s/\*//" | awk '{print $1}' | sed "s/.* //")
+}
+# *********************************** / git fbr ***********************************
