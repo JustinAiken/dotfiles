@@ -56,3 +56,16 @@ jcurl() {
   curl -s "$@" | jq -C '.' | less
 }
 
+# fzf - Find Directory
+fcd() {
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+}
+
+# fzf - RVM integration
+frb() {
+  local rb
+  rb=$((echo system; rvm list | grep ruby | cut -c 4-) |
+       awk '{print $1}' |
+       fzf-tmux -l 30 +m --reverse) && rvm use $rb
+}
