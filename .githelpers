@@ -148,7 +148,7 @@ goodmorning() {
   fi
 
   goodmorning_echo_green "Running $RAKE_CMD db:migrate..."
-  `$RAKE_CMD db:migrate db:test:prepare` || goodmorning_echo_yellow "Failed to ready the database!"
+  $RAKE_CMD db:migrate db:test:prepare || goodmorning_echo_yellow "Failed to ready the database!"
 
   # Avoid noise generated from running migration on master:
   if [ -f db/structure.sql ]; then
