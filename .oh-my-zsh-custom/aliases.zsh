@@ -10,7 +10,7 @@ brewmeister() {
   echo "Cleaning up!\n\n"
   brew cleanup
   echo "Outdated: \n\n"
-  brew cask outdated
+  brew-cask-outdated
   echo "Install outdateds with \`brew cask reinstall\`"
 }
 

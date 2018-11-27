@@ -18,6 +18,7 @@ else
 fi
 
 export PATH="/usr/local/opt/node@8/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 [ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
 
 source $ZSH/oh-my-zsh.sh
