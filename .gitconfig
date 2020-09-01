@@ -80,3 +80,5 @@
 	branch = false
 [diff]
 	colorMoved = zebra
+[init]
+	defaultBranch = main
