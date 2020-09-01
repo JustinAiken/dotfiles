@@ -15,6 +15,7 @@ Gemfile.local
 Gemfile.local.lock
 
 .vscode/
+*.code-workspace
 
 # Tags:
 .tags_swap
@@ -32,3 +33,6 @@ mynotes.sql
 # For storing code for me:
 justin/
 spec/justin/
+
+# Netlify:
+.netlify/
