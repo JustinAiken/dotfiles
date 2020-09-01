@@ -69,3 +69,12 @@ frb() {
        awk '{print $1}' |
        fzf-tmux -l 30 +m --reverse) && rvm use $rb
 }
+
+# Stupid kwargs
+silence_ruby() {
+  export RUBYOPT='-W:no-deprecated -W:no-experimental'
+}
+
+unsilence_ruby() {
+  unset RUBYOPT
+}
