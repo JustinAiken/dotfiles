@@ -1,6 +1,6 @@
 local rvm=''
-if hash rvm-prompt 2>/dev/null; then
-  rvm='%{$fg[green]%}<$(rvm-prompt i v p g)>%{$reset_color%}'
+if hash asdf 2>/dev/null; then
+  local rvm="%{$fg[red]%}‹$(asdf current ruby | awk '{print $2}')›%{$reset_color%}"
 fi
 
 user="%n"

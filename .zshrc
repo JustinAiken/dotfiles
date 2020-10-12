@@ -12,14 +12,12 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 if [[ "$(uname)" == "Darwin" ]]; then
-  plugins=(ahn aws bundle colored-man-pages capistrano docker docker-compose gem git github heroku iterm2 jump mix npm osx pod pow powify rvm spring_gem vagrant zeus zsh_reload zsh-syntax-highlighting)
+  plugins=(ahn asdf aws bundle colored-man-pages capistrano docker docker-compose gem git github heroku iterm2 jump mix npm osx pod pow powify spring_gem vagrant zeus zsh_reload zsh-syntax-highlighting)
 else
-  plugins=(ahn aws bundle capistrano docker docker-compose gem git heroku jump mix npm rvm spring_gem vagrant zeus zsh_reload zsh-syntax-highlighting)
+  plugins=(ahn aws bundle capistrano docker docker-compose gem git heroku jump mix npm spring_gem vagrant zeus zsh_reload zsh-syntax-highlighting)
 fi
 
-export PATH="/usr/local/opt/node@8/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-[ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
 
 source $ZSH/oh-my-zsh.sh
 
@@ -62,3 +60,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export ASDF_DIR=$(brew --prefix asdf)
+/usr/local/opt/asdf/asdf.sh
