@@ -71,7 +71,7 @@ unsilence_ruby() {
   unset RUBYOPT
 }
 
-fuck_off_big_sur {
+fuck_off_big_sur() {
   defaults write com.apple.systempreferences AttentionPrefBundleIDs 0
   killall Dock
 }
