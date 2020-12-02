@@ -62,14 +62,6 @@ fcd() {
   dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
 
-# fzf - RVM integration
-frb() {
-  local rb
-  rb=$((echo system; rvm list | grep ruby | cut -c 4-) |
-       awk '{print $1}' |
-       fzf-tmux -l 30 +m --reverse) && rvm use $rb
-}
-
 # Stupid kwargs
 silence_ruby() {
   export RUBYOPT='-W:no-deprecated -W:no-experimental'
